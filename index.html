@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BS Cafe Ampati | Love At First Bite</title>
+<meta name="description" content="BS Cafe Ampati - Snacks, Chinese, Indian, Garo Traditional Food & Homestay Booking. Call 8731828128">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#ffffff;
+--text:#111;
+--card:#f7f7f7;
+--gold:#c8a24c;
+}
+.logo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+}
+
+/* Dark mode glow */
+body.dark .logo {
+    box-shadow: 0 0 20px rgba(212,175,55,0.5);
+}
+body.dark{
+--bg:#0f0f0f;
+--text:#ffffff;
+--card:#1c1c1c;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+transition:0.3s;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+position:sticky;
+top:0;
+background:var(--bg);
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+width:55px;
+height:55px;
+border-radius:50%;
+}
+
+nav a{
+margin:0 12px;
+text-decoration:none;
+color:var(--text);
+font-weight:500;
+}
+
+.dark-toggle{
+cursor:pointer;
+padding:8px 15px;
+background:var(--gold);
+border:none;
+color:#000;
+border-radius:30px;
+font-weight:600;
+}
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 20px;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:1.2rem;
+opacity:0.8;
+margin-bottom:25px;
+}
+
+.btn{
+padding:12px 30px;
+background:var(--gold);
+color:#000;
+border:none;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+}
+
+section{
+padding:70px 8%;
+}
+
+.section-title{
+font-size:2rem;
+margin-bottom:30px;
+text-align:center;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.menu-card{
+background:var(--card);
+padding:25px;
+border-radius:15px;
+transition:0.3s;
+}
+
+.menu-card:hover{
+transform:translateY(-5px);
+}
+
+.menu-card h3{
+margin-bottom:15px;
+color:var(--gold);
+}
+
+.menu-card ul{
+list-style:none;
+font-size:14px;
+line-height:1.8;
+}
+
+.form-box{
+max-width:600px;
+margin:auto;
+background:var(--card);
+padding:30px;
+border-radius:15px;
+}
+
+.form-box input, .form-box textarea{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+.form-box button{
+width:100%;
+padding:12px;
+background:var(--gold);
+border:none;
+border-radius:8px;
+font-weight:600;
+}
+
+footer{
+background:var(--card);
+text-align:center;
+padding:30px;
+margin-top:40px;
+}
+
+.floating{
+position:fixed;
+right:20px;
+bottom:20px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.floating a{
+background:var(--gold);
+color:#000;
+padding:12px 15px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<img src="bscafe-logo.png" alt="BS Cafe Ampati Logo" class="logo">
+<h2>BS Cafe</h2>
+</div>
+
+<nav>
+<a href="#menu">Menu</a>
+<a href="#reservation">Reservation</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<button class="dark-toggle" onclick="toggleDark()">Dark Mode</button>
+</header>
+
+<div class="hero">
+<h1>Love At First Bite</h1>
+<p>Snacks • Chinese • Indian • Garo Traditional • Homestay</p>
+<a href="tel:8731828128" class="btn">Call Now</a>
+</div>
+
+<section id="menu">
+<h2 class="section-title">Our Menu</h2>
+
+<div class="menu-grid">
+
+<div class="menu-card">
+<h3>Snacks</h3>
+<ul>
+<li>French Fries</li>
+<li>Chicken Chop</li>
+<li>Pork Chop</li>
+<li>Omelette</li>
+<li>Chicken Burger</li>
+<li>Chicken Wings</li>
+<li>Chilli Chicken Crispy</li>
+<li>Pork Crispy</li>
+</ul>
+</div>
+
+<div class="menu-card">
+<h3>Chow</h3>
+<ul>
+<li>Veg Chow</li>
+<li>Chicken Chow</li>
+<li>Pork Chow</li>
+<li>Chicken Schezwan Chow</li>
+<li>Mix Chow</li>
+</ul>
+</div>
+
+<div class="menu-card">
+<h3>Indian & Chinese</h3>
+<ul>
+<li>Chilli Chicken Gravy</li>
+<li>Butter Chicken</li>
+<li>Chicken Curry</li>
+<li>Dal Makhani</li>
+<li>Paneer Masala</li>
+</ul>
+</div>
+
+<div class="menu-card">
+<h3>Garo Traditional</h3>
+<ul>
+<li>Chicken Kappa</li>
+<li>Chicken Pura</li>
+<li>Pork Kappa</li>
+<li>Pork Pura</li>
+</ul>
+</div>
+
+<div class="menu-card">
+<h3>Rice</h3>
+<ul>
+<li>Veg Fried Rice</li>
+<li>Chicken Fried Rice</li>
+<li>Pork Fried Rice</li>
+<li>Chicken Biryani</li>
+</ul>
+</div>
+
+<div class="menu-card">
+<h3>Beverages</h3>
+<ul>
+<li>Milk Tea</li>
+<li>Lemon Tea</li>
+<li>Cold Coffee</li>
+<li>Oreo Shake</li>
+<li>Mango Shake</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section id="reservation">
+<h2 class="section-title">Book Homestay</h2>
+<div class="form-box">
+<form>
+<input type="text" placeholder="Full Name" required>
+<input type="tel" placeholder="Phone Number" required>
+<input type="date" required>
+<textarea rows="4" placeholder="Message"></textarea>
+<button type="submit">Submit Reservation</button>
+</form>
+<br>
+<a href="tel:8731828128" class="btn">Or Call to Book</a>
+</div>
+</section>
+
+<section id="contact">
+<h2 class="section-title">Find Us</h2>
+<iframe 
+src="https://www.google.com/maps?q=BS+Cafe+Ampati&output=embed"
+width="100%" height="350" style="border:0;border-radius:15px;">
+</iframe>
+</section>
+
+<footer>
+<p>© 2026 BS Cafe Ampati | Call: 8731828128</p>
+</footer>
+
+<div class="floating">
+<a href="tel:8731828128">📞 Call</a>
+<a href="https://wa.me/918731828128" target="_blank">💬 WhatsApp</a>
+</div>
+
+<script>
+function toggleDark(){
+document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>
