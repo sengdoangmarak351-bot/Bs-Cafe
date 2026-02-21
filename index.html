@@ -254,6 +254,25 @@ border-radius:50px;
 text-decoration:none;
 font-weight:600;
 text-align:center;
+}<style>
+/* ===== REAL IMAGE GALLERY ===== */
+.real-gallery {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.real-gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.real-gallery-container img {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 </style>
 </head>
@@ -299,10 +318,7 @@ text-align:center;
 <p>Comfortable stay and delicious meals under one roof.</p>
 </div>
 
-<div class="feature-box">
-<h3>🚚 Home Delivery</h3>
-<p>Fresh food delivered to your doorstep (charges apply).</p>
-</div>
+
 
 <div class="feature-box">
 <h3>📍 Prime Location</h3>
@@ -399,6 +415,14 @@ text-align:center;
 <br>
 <a href="tel:8731828128" class="btn">Or Call to Book</a>
 </div>
+</section>
+<!-- Real Gallery Section -->
+<section class="real-gallery">
+    <div class="real-gallery-container">
+        <img src="cafe1.jpg" alt="BS Cafe View">
+        <img src="cafe2.jpg" alt="BS Cafe Entrance">
+        <img src="pakora.jpg" alt="Veg Pakora">
+    </div>
 </section>
 
 <section id="contact">
