@@ -1,453 +1,632 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BS Cafe Ampati | Love At First Bite</title>
-<meta name="description" content="BS Cafe Ampati - Snacks, Chinese, Indian, Garo Traditional Food & Homestay Booking. Call 8731828128">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bs Cafe Ampati | seasonal dishes & cozy moments</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font: Inter (clean, modern) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
+  <style>
+    /* ----- RESET & VARIABLES (earth tones) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    html {
+      scroll-behavior: smooth;
+    }
 
-<style>
-:root{
---bg:#ffffff;
---text:#111;
---card:#f7f7f7;
---gold:#c8a24c;
-}
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #fcf8f3;       /* warm cream */
+      color: #2e2b27;
+      line-height: 1.5;
+    }
 
-body.dark{
---bg:#0f0f0f;
---text:#ffffff;
---card:#1c1c1c;
-}
+    :root {
+      --terracotta: #c96b5a;            /* warm, earthy red */
+      --terracotta-dark: #a84f3f;
+      --olive: #6b8e23;                 /* fresh olive green */
+      --olive-light: #8aaE5e;
+      --sand: #f5ede3;
+      --brown-soft: #5a4a3f;
+      --white-soft: #fffaf5;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
+    /* ----- TYPOGRAPHY & UTILITY ----- */
+    h1, h2, h3 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
 
-body{
-background:#f6efe6; /* Warm cozy background */
-color:var(--text);
-transition:0.3s;
-}
+    h2 {
+      font-size: 2.2rem;
+      color: var(--olive);
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: var(--terracotta);
+      border-radius: 4px;
+    }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-position:sticky;
-top:0;
-background:var(--bg);
-z-index:1000;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
-}
+    .section-padding {
+      padding: 5rem 1.5rem;
+    }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-}
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
 
-.logo img{
-width:55px;
-height:55px;
-border-radius:50%;
-}
+    .btn {
+      display: inline-block;
+      background-color: var(--terracotta);
+      color: white;
+      font-weight: 600;
+      padding: 0.85rem 2.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(201, 107, 90, 0.3);
+    }
+    .btn:hover {
+      background-color: var(--terracotta-dark);
+      transform: scale(1.02);
+    }
 
-nav a{
-margin:0 12px;
-text-decoration:none;
-color:var(--text);
-font-weight:500;
-}
+    /* ----- NAVBAR (mobile first) ----- */
+    .navbar {
+      background-color: var(--white-soft);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+      padding: 0.8rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(107, 142, 35, 0.15);
+    }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--olive);
+      text-decoration: none;
+      line-height: 1.2;
+    }
+    .logo span {
+      color: var(--terracotta);
+      font-size: 1rem;
+      font-weight: 400;
+      display: block;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2e2b27;
+      font-weight: 500;
+      transition: color 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: var(--terracotta);
+    }
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      color: var(--olive);
+      cursor: pointer;
+    }
+    /* mobile nav */
+    @media (max-width: 800px) {
+      .nav-links {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        background-color: var(--white-soft);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        box-shadow: 0 20px 20px rgba(0,0,0,0.05);
+        border-bottom: 2px solid var(--olive-light);
+        display: none;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .menu-icon {
+        display: block;
+      }
+    }
 
-.dark-toggle{
-cursor:pointer;
-padding:8px 15px;
-background:var(--gold);
-border:none;
-color:#000;
-border-radius:30px;
-font-weight:600;
-}
+    /* ----- HERO (home) ----- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 2rem 1.5rem 4rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .hero-content h1 {
+      font-size: 3.3rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #3f3a35;
+    }
+    .hero-content h1 em {
+      color: var(--terracotta);
+      font-style: normal;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 2rem;
+      color: #5a534b;
+      max-width: 500px;
+    }
+    .hero-image {
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 450px;
+      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
+    }
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-image {
+        height: 300px;
+        order: -1;
+      }
+    }
 
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:0 20px;
-background:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1400') center/cover no-repeat;
-position:relative;
-color:#fff;
-}
+    /* ----- MENU SECTION (preview cards) ----- */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .menu-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: 0.2s ease;
+    }
+    .menu-card:hover {
+      transform: translateY(-6px);
+    }
+    .menu-img {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+    }
+    .menu-card h3 {
+      font-size: 1.5rem;
+      margin: 1.2rem 1rem 0.5rem;
+      color: var(--olive);
+    }
+    .menu-card p {
+      margin: 0 1rem 1.5rem;
+      color: #4d443d;
+      font-weight: 400;
+    }
+    .price {
+      display: inline-block;
+      margin: 0 1rem 1.5rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      font-size: 1.3rem;
+    }
 
-.hero::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-z-index:0;
-}
+    /* ----- ABOUT / RESERVATIONS / EVENTS / GALLERY / CONTACT ----- */
+    .about-grid {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .about-text {
+      flex: 1 1 300px;
+    }
+    .about-image {
+      flex: 1 1 300px;
+      border-radius: 30px;
+      height: 340px;
+      background: url('https://images.unsplash.com/photo-1555396273-8ea4e2f8c7e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+      box-shadow: var(--shadow);
+    }
 
-.hero *{
-position:relative;
-z-index:1;
-}
+    /* reservation form */
+    .reservation-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 30px;
+      max-width: 650px;
+      margin: 2rem auto 0;
+      box-shadow: var(--shadow);
+    }
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .form-group {
+      flex: 1 1 200px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: var(--olive);
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd0c0;
+      border-radius: 40px;
+      font-family: inherit;
+      background: #fefcf9;
+    }
+    .reservation-form .btn {
+      width: 100%;
+      margin-top: 0.8rem;
+    }
 
-.hero h1{
-font-size:3rem;
-margin-bottom:15px;
-}
+    /* events cards */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .event-item {
+      background: white;
+      padding: 1.8rem 1.5rem;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      border-left: 8px solid var(--terracotta);
+    }
+    .event-item h3 {
+      color: var(--olive);
+      margin-bottom: 0.5rem;
+    }
+    .event-date {
+      color: var(--terracotta);
+      font-weight: 600;
+      margin: 0.7rem 0;
+    }
 
-.hero p{
-font-size:1.2rem;
-opacity:0.8;
-margin-bottom:25px;
-}
+    /* gallery grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .gallery-item {
+      aspect-ratio: 1 / 1;
+      border-radius: 25px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+      transition: 0.2s;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
 
-.btn{
-padding:12px 30px;
-background:var(--gold);
-color:#000;
-border:none;
-border-radius:30px;
-text-decoration:none;
-font-weight:600;
-}
+    /* contact row */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 40px;
+      box-shadow: var(--shadow);
+    }
+    .contact-info {
+      flex: 1 1 250px;
+    }
+    .contact-info i {
+      color: var(--terracotta);
+      width: 35px;
+      font-size: 1.4rem;
+    }
+    .contact-info p {
+      margin: 1rem 0;
+    }
+    .map-placeholder {
+      flex: 2 1 350px;
+      background: #dad3cb;
+      border-radius: 30px;
+      height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5a4f48;
+      font-weight: 500;
+      background-image: url('https://images.unsplash.com/photo-1509358271058-acd22cc93898?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .map-placeholder span {
+      background: rgba(255,250,240,0.8);
+      padding: 0.7rem 1.5rem;
+      border-radius: 60px;
+      color: var(--olive);
+      font-weight: 600;
+    }
 
-section{
-padding:80px 8%;
-}
+    /* footer */
+    .footer {
+      background: #e6dbcf;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: #4d3f36;
+      margin-top: 3rem;
+      border-top: 4px solid var(--olive);
+    }
+    .socials {
+      margin-top: 1rem;
+    }
+    .socials a {
+      color: var(--terracotta);
+      font-size: 1.7rem;
+      margin: 0 0.7rem;
+      transition: 0.2s;
+    }
+    .socials a:hover {
+      color: var(--olive);
+    }
 
-/* Section Title Upgrade */
-.section-title{
-font-size:2rem;
-margin-bottom:30px;
-text-align:center;
-position:relative;
-}
-
-.section-title::after{
-content:"";
-width:60px;
-height:3px;
-background:var(--gold);
-display:block;
-margin:12px auto 0;
-}
-
-/* Feature Section */
-.section-warm{
-background:#efe3d3;
-}
-
-.features{
-display:flex;
-flex-wrap:wrap;
-gap:20px;
-justify-content:center;
-margin-top:40px;
-}
-
-.feature-box{
-background:#ffffff;
-padding:30px;
-border-radius:15px;
-width:280px;
-text-align:center;
-box-shadow:0 8px 25px rgba(0,0,0,0.08);
-transition:0.3s;
-}
-
-.feature-box:hover{
-transform:translateY(-8px);
-}
-
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-}
-
-.menu-card{
-background:var(--card);
-padding:25px;
-border-radius:15px;
-transition:0.3s;
-}
-
-.menu-card:hover{
-transform:translateY(-5px);
-}
-
-.menu-card h3{
-margin-bottom:15px;
-color:var(--gold);
-}
-
-.menu-card ul{
-list-style:none;
-font-size:14px;
-line-height:1.8;
-}
-
-.form-box{
-max-width:600px;
-margin:auto;
-background:var(--card);
-padding:30px;
-border-radius:15px;
-}
-
-.form-box input, .form-box textarea{
-width:100%;
-padding:12px;
-margin:10px 0;
-border-radius:8px;
-border:1px solid #ccc;
-}
-
-.form-box button{
-width:100%;
-padding:12px;
-background:var(--gold);
-border:none;
-border-radius:8px;
-font-weight:600;
-}
-
-/* Warm Footer */
-footer{
-background:#4b2e1e;
-color:#ffffff;
-text-align:center;
-padding:30px;
-margin-top:40px;
-}
-
-.floating{
-position:fixed;
-right:20px;
-bottom:20px;
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-
-.floating a{
-background:var(--gold);
-color:#000;
-padding:12px 15px;
-border-radius:50px;
-text-decoration:none;
-font-weight:600;
-text-align:center;
-}
-/* ===== REAL IMAGE GALLERY ===== */
-.real-gallery {
-    padding: 60px 20px;
-    text-align: center;
-    background: var(--bg);
-}
-
-.real-gallery-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.real-gallery-container img {
-    width: 300px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-</style>
+    /* small adjustments */
+    hr {
+      border: 1px solid rgba(107, 142, 35, 0.2);
+      margin: 2rem 0;
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-<div class="logo">
-<img src="bscafe-logo.png" alt="BS Cafe Logo">
-<h2>BS Cafe</h2>
-</div>
-
-<nav>
-<a href="#menu">Menu</a>
-<a href="#reservation">Reservation</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<button class="dark-toggle" onclick="toggleTheme()">Dark Mode</button>
-</header>
-
-<div class="hero">
-<h1>Love At First Bite</h1>
-<p>Snacks • Chinese • Indian • Garo Traditional • Homestay</p>
-<a href="tel:8731828128" class="btn">Call Now</a>
-</div>
-<div style="margin-top:40px;max-width:700px;">
-<h3 style="font-weight:600;margin-bottom:10px;color:var(--gold);">Why Choose BS Cafe?</h3>
-<p style="font-size:15px;line-height:1.7;opacity:0.9;">
-✔ Fresh & Quality Ingredients  
-✔ Authentic Garo Traditional Taste  
-✔ Clean & Comfortable Homestay  
-✔ Friendly Service & Affordable Pricing  
-</p>
-</div>
-<!-- New Feature Section -->
-<section class="section-warm">
-<h2 class="section-title">Why Choose BS Cafe</h2>
-
-<div class="features">
-<div class="feature-box">
-<h3>☕ Cafe & Homestay</h3>
-<p>Comfortable stay and delicious meals under one roof.</p>
-</div>
-
-
-
-<div class="feature-box">
-<h3>📍 Prime Location</h3>
-<p>Located at Ampati Bazar near Rural Bank.</p>
-</div>
-</div>
-</section>
-
-<section id="menu">
-<h2 class="section-title">Our Menu</h2>
-
-<div class="menu-grid">
-
-<div class="menu-card">
-<h3>Snacks</h3>
-<ul>
-<li>French Fries</li>
-<li>Chicken Chop</li>
-<li>Pork Chop</li>
-<li>Omelette</li>
-<li>Chicken Burger</li>
-<li>Chicken Wings</li>
-<li>Chilli Chicken Crispy</li>
-<li>Pork Crispy</li>
-</ul>
-</div>
-
-<div class="menu-card">
-<h3>Chow</h3>
-<ul>
-<li>Veg Chow</li>
-<li>Chicken Chow</li>
-<li>Pork Chow</li>
-<li>Chicken Schezwan Chow</li>
-<li>Mix Chow</li>
-</ul>
-</div>
-
-<div class="menu-card">
-<h3>Indian & Chinese</h3>
-<ul>
-<li>Chilli Chicken Gravy</li>
-<li>Butter Chicken</li>
-<li>Chicken Curry</li>
-<li>Dal Makhani</li>
-<li>Paneer Masala</li>
-</ul>
-</div>
-
-<div class="menu-card">
-<h3>Garo Traditional</h3>
-<ul>
-<li>Chicken Kappa</li>
-<li>Chicken Pura</li>
-<li>Pork Kappa</li>
-<li>Pork Pura</li>
-</ul>
-</div>
-
-<div class="menu-card">
-<h3>Rice</h3>
-<ul>
-<li>Veg Fried Rice</li>
-<li>Chicken Fried Rice</li>
-<li>Pork Fried Rice</li>
-<li>Chicken Biryani</li>
-</ul>
-</div>
-
-<div class="menu-card">
-<h3>Beverages</h3>
-<ul>
-<li>Milk Tea</li>
-<li>Lemon Tea</li>
-<li>Cold Coffee</li>
-<li>Oreo Shake</li>
-<li>Mango Shake</li>
-</ul>
-</div>
-
-</div>
-</section>
-
-<section id="reservation">
-<h2 class="section-title">Book Homestay</h2>
-<div class="form-box">
-<form>
-<input type="text" placeholder="Full Name" required>
-<input type="tel" placeholder="Phone Number" required>
-<input type="date" required>
-<textarea rows="4" placeholder="Message"></textarea>
-<button type="submit">Submit Reservation</button>
-</form>
-<br>
-<a href="tel:8731828128" class="btn">Or Call to Book</a>
-</div>
-</section>
-<!-- Real Gallery Section -->
-<section class="real-gallery">
-    <div class="real-gallery-container">
-        <img src="cafe1.jpg" alt="BS Cafe View">
-        <img src="cafe2.jpg" alt="BS Cafe Entrance">
-        <img src="pakora.jpg" alt="Veg Pakora">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">Bs Cafe <span>Ampati</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#reservations">Reservations</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
     </div>
-</section>
+  </nav>
 
-<section id="contact">
-<h2 class="section-title">Find Us</h2>
-<iframe 
-src="https://www.google.com/maps?q=BS+Cafe+Ampati&output=embed"
-width="100%" height="350" style="border:0;border-radius:15px;">
-</iframe>
-</section>
+  <!-- HOME section (hero) -->
+  <section id="home" class="hero section-padding" style="padding-top: 2rem;">
+    <div class="hero-content">
+      <h1>Where <em>seasonal</em><br>simplicity meets warmth</h1>
+      <p>Inspired by the earth, crafted by hand — terracotta & olive on every plate.</p>
+      <a href="#reservations" class="btn">reserve a table <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+    </div>
+    <div class="hero-image"></div>
+  </section>
 
-<footer>
-<p>© 2026 BS Cafe Ampati | Call: 8731828128</p>
-</footer>
+  <!-- MENU section (preview) -->
+  <section id="menu" class="section-padding container">
+    <h2>seasonal menu</h2>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <h3>harvest bowl</h3>
+        <p>roasted roots, wild rice, herbs & tahini</p>
+        <span class="price">$16</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <h3>wood-fired pie</h3>
+        <p>heirloom tomatoes, basil, olive tapenade</p>
+        <span class="price">$19</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <h3>grass-fed strip</h3>
+        <p>with salsa verde & charred scallions</p>
+        <span class="price">$28</span>
+      </div>
+      <div class="menu-card">
+        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <h3>pasta al forno</h3>
+        <p>baked seasonal squash, sage, parmesan</p>
+        <span class="price">$22</span>
+      </div>
+    </div>
+    <div style="text-align: right; margin-top: 2rem;">
+      <a href="#" style="color: var(--terracotta); font-weight: 600;">view full menu <i class="fas fa-long-arrow-alt-right"></i></a>
+    </div>
+  </section>
 
-<div class="floating">
-<a href="tel:8731828128">📞 Call</a>
-<a href="https://wa.me/918731828128" target="_blank">💬 WhatsApp</a>
-</div>
+  <!-- ABOUT US -->
+  <section id="about" class="section-padding" style="background-color: #f4ebe2;">
+    <div class="container about-grid">
+      <div class="about-text">
+        <h2>about us</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">At Bs Cafe Ampati, we believe in the rhythm of the seasons. Our kitchen works with local farms to bring you ingredients at their peak — from autumn roots to spring greens.</p>
+        <p>Inspired by the earthy tones of terracotta and olive groves, our space is designed for unhurried meals and genuine connection. Whether it's a weekday lunch or a celebration, you'll find a menu that changes with nature.</p>
+      </div>
+      <div class="about-image"></div>
+    </div>
+  </section>
 
-<script>
-function toggleTheme() {
-    document.body.classList.toggle("dark");
-}
-</script>
+  <!-- RESERVATIONS -->
+  <section id="reservations" class="section-padding container">
+    <h2>reserve a table</h2>
+    <div class="reservation-form">
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Date</label>
+            <input type="date" value="2025-04-15">
+          </div>
+          <div class="form-group">
+            <label>Time</label>
+            <select>
+              <option>5:00 PM</option>
+              <option>5:30 PM</option>
+              <option>6:00 PM</option>
+              <option>6:30 PM</option>
+              <option>7:00 PM</option>
+              <option>7:30 PM</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Guests</label>
+            <select>
+              <option>2 guests</option>
+              <option>3 guests</option>
+              <option>4 guests</option>
+              <option>5 guests</option>
+              <option>6 guests</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn">check availability</button>
+      </form>
+      <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #6b5e53;"><i class="fas fa-leaf" style="color: var(--olive);"></i> For parties larger than 6, please call us.</p>
+    </div>
+  </section>
 
+  <!-- EVENTS -->
+  <section id="events" class="section-padding" style="background-color: #f4ebe2;">
+    <div class="container">
+      <h2>upcoming events</h2>
+      <div class="events-grid">
+        <div class="event-item">
+          <h3>farmers’ supper</h3>
+          <div class="event-date">fri, may 12 · 7pm</div>
+          <p>Four courses celebrating local spring produce, with the farmers themselves.</p>
+        </div>
+        <div class="event-item">
+          <h3>pasta workshop</h3>
+          <div class="event-date">sat, may 20 · 11am</div>
+          <p>Hands‑on class making seasonal filled pasta. take home what you make.</p>
+        </div>
+        <div class="event-item">
+          <h3>wine & olives</h3>
+          <div class="event-date">thu, jun 1 · 6:30pm</div>
+          <p>natural wine tasting paired with mediterranean small plates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section-padding container">
+    <h2>gallery</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1543339308-43e59d6b73a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1560624052-449f5ddf0c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1586999768265-24af89630739?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section-padding" style="background-color: #f4ebe2;">
+    <div class="container">
+      <h2>visit / contact</h2>
+      <div class="contact-row">
+        <div class="contact-info">
+          <p><i class="fas fa-map-pin"></i> 12 Bs Lane, Ampati</p>
+          <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+          <p><i class="fas fa-envelope"></i> hello@bscafeampati.com</p>
+          <p><i class="fas fa-clock"></i> Wed–Mon 9am–10pm<br>(closed tuesday)</p>
+        </div>
+        <div class="map-placeholder">
+          <span><i class="fas fa-map-marked-alt" style="margin-right: 8px;"></i> open in maps</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2025 Bs Cafe Ampati — grown from earth, served with warmth</p>
+    <div class="socials">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">terracotta & olive · seasonal always</p>
+  </footer>
+
+  <!-- simple mobile menu toggle -->
+  <script>
+    const menuIcon = document.getElementById('menuIcon');
+    const navLinks = document.getElementById('navLinks');
+
+    menuIcon.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // close menu after clicking a link (optional for better UX)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        navLinks.classList.remove('show');
+      });
+    });
+  </script>
 </body>
     </html>
