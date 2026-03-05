@@ -3,630 +3,520 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bs Cafe Ampati | seasonal dishes & cozy moments</title>
-  <!-- Font Awesome 6 (free) -->
+  <title>Bs Cafe Ampati · order online</title>
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Font: Inter (clean, modern) -->
+  <!-- Google Font: Inter -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&display=swap" rel="stylesheet">
   <style>
-    /* ----- RESET & VARIABLES (earth tones) ----- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Inter", sans-serif;
-      background-color: #fcf8f3;       /* warm cream */
+      background: #fcf8f3;
       color: #2e2b27;
       line-height: 1.5;
     }
-
     :root {
-      --terracotta: #c96b5a;            /* warm, earthy red */
+      --terracotta: #c96b5a;
       --terracotta-dark: #a84f3f;
-      --olive: #6b8e23;                 /* fresh olive green */
-      --olive-light: #8aaE5e;
+      --olive: #6b8e23;
+      --olive-light: #8aae5e;
       --sand: #f5ede3;
       --brown-soft: #5a4a3f;
       --white-soft: #fffaf5;
-      --shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      --shadow: 0 8px 20px rgba(0,0,0,0.05);
     }
-
-    /* ----- TYPOGRAPHY & UTILITY ----- */
-    h1, h2, h3 {
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
-    h2 {
-      font-size: 2.2rem;
-      color: var(--olive);
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-    }
-    h2:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 70px;
-      height: 4px;
-      background: var(--terracotta);
-      border-radius: 4px;
-    }
-
-    .section-padding {
-      padding: 5rem 1.5rem;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: var(--terracotta);
-      color: white;
-      font-weight: 600;
-      padding: 0.85rem 2.2rem;
-      border-radius: 40px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      box-shadow: 0 4px 10px rgba(201, 107, 90, 0.3);
-    }
-    .btn:hover {
-      background-color: var(--terracotta-dark);
-      transform: scale(1.02);
-    }
-
-    /* ----- NAVBAR (mobile first) ----- */
+    /* navbar */
     .navbar {
-      background-color: var(--white-soft);
+      background: var(--white-soft);
       box-shadow: 0 2px 15px rgba(0,0,0,0.03);
       padding: 0.8rem 1.5rem;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid rgba(107, 142, 35, 0.15);
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(107,142,35,0.15);
     }
     .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1280px;
-      margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1400px; margin: 0 auto;
     }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--olive);
-      text-decoration: none;
-      line-height: 1.2;
+    .logo { font-size: 1.8rem; font-weight: 700; color: var(--olive); text-decoration: none; line-height: 1.2; }
+    .logo span { color: var(--terracotta); font-size: 1rem; display: block; }
+    .nav-links { display: flex; gap: 1.2rem; align-items: center; }
+    .nav-links a { text-decoration: none; color: #2e2b27; font-weight: 500; }
+    .nav-links a:hover { color: var(--terracotta); }
+    .cart-icon { position: relative; cursor: pointer; }
+    .cart-count {
+      position: absolute; top: -10px; right: -10px;
+      background: var(--terracotta); color: white; border-radius: 50%;
+      width: 22px; height: 22px; font-size: 0.8rem;
+      display: flex; align-items: center; justify-content: center;
     }
-    .logo span {
-      color: var(--terracotta);
-      font-size: 1rem;
-      font-weight: 400;
-      display: block;
-      letter-spacing: 1px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-      align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #2e2b27;
-      font-weight: 500;
-      transition: color 0.2s;
-      font-size: 1rem;
-    }
-    .nav-links a:hover {
-      color: var(--terracotta);
-    }
-    .menu-icon {
-      display: none;
-      font-size: 2rem;
-      color: var(--olive);
-      cursor: pointer;
-    }
-    /* mobile nav */
+    .menu-icon { display: none; font-size: 2rem; color: var(--olive); cursor: pointer; }
     @media (max-width: 800px) {
-      .nav-links {
-        position: absolute;
-        top: 75px;
-        left: 0;
-        right: 0;
-        background-color: var(--white-soft);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1.5rem 2rem;
-        gap: 1.2rem;
-        box-shadow: 0 20px 20px rgba(0,0,0,0.05);
-        border-bottom: 2px solid var(--olive-light);
-        display: none;
-      }
-      .nav-links.show {
-        display: flex;
-      }
-      .menu-icon {
-        display: block;
-      }
+      .nav-links { display: none; }
+      .menu-icon { display: block; }
     }
 
-    /* ----- HERO (home) ----- */
+    /* hero (simplified) */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 2.5rem;
-      padding: 2rem 1.5rem 4rem;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-    .hero-content h1 {
-      font-size: 3.3rem;
-      font-weight: 700;
-      line-height: 1.1;
-      color: #3f3a35;
-    }
-    .hero-content h1 em {
-      color: var(--terracotta);
-      font-style: normal;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-      margin: 1.5rem 0 2rem;
-      color: #5a534b;
-      max-width: 500px;
-    }
-    .hero-image {
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      height: 450px;
-      background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover;
-    }
-    @media (max-width: 800px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-content p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-image {
-        height: 300px;
-        order: -1;
-      }
-    }
-
-    /* ----- MENU SECTION (preview cards) ----- */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .menu-card {
-      background: white;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: 0.2s ease;
-    }
-    .menu-card:hover {
-      transform: translateY(-6px);
-    }
-    .menu-img {
-      height: 220px;
-      background-size: cover;
-      background-position: center;
-    }
-    .menu-card h3 {
-      font-size: 1.5rem;
-      margin: 1.2rem 1rem 0.5rem;
-      color: var(--olive);
-    }
-    .menu-card p {
-      margin: 0 1rem 1.5rem;
-      color: #4d443d;
-      font-weight: 400;
-    }
-    .price {
-      display: inline-block;
-      margin: 0 1rem 1.5rem;
-      font-weight: 700;
-      color: var(--terracotta);
-      font-size: 1.3rem;
-    }
-
-    /* ----- ABOUT / RESERVATIONS / EVENTS / GALLERY / CONTACT ----- */
-    .about-grid {
-      display: flex;
-      gap: 3rem;
-      align-items: center;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 3rem 1.5rem; max-width: 1400px; margin: 0 auto;
       flex-wrap: wrap;
     }
-    .about-text {
-      flex: 1 1 300px;
-    }
-    .about-image {
-      flex: 1 1 300px;
-      border-radius: 30px;
-      height: 340px;
-      background: url('https://images.unsplash.com/photo-1555396273-8ea4e2f8c7e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
-      box-shadow: var(--shadow);
-    }
+    .hero h1 { font-size: 2.8rem; font-weight: 700; color: #3f3a35; }
+    .hero h1 em { color: var(--terracotta); font-style: normal; }
 
-    /* reservation form */
-    .reservation-form {
-      background: white;
-      padding: 2rem;
-      border-radius: 30px;
-      max-width: 650px;
-      margin: 2rem auto 0;
-      box-shadow: var(--shadow);
+    /* categories */
+    .categories {
+      display: flex; flex-wrap: wrap; gap: 0.8rem;
+      margin: 2rem 0; justify-content: center;
     }
-    .form-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-      margin-bottom: 1.2rem;
-    }
-    .form-group {
-      flex: 1 1 200px;
-    }
-    .form-group label {
-      display: block;
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-      color: var(--olive);
-    }
-    .form-group input, .form-group select {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid #ddd0c0;
-      border-radius: 40px;
-      font-family: inherit;
-      background: #fefcf9;
-    }
-    .reservation-form .btn {
-      width: 100%;
-      margin-top: 0.8rem;
-    }
-
-    /* events cards */
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .event-item {
-      background: white;
-      padding: 1.8rem 1.5rem;
-      border-radius: 30px;
-      box-shadow: var(--shadow);
-      border-left: 8px solid var(--terracotta);
-    }
-    .event-item h3 {
-      color: var(--olive);
-      margin-bottom: 0.5rem;
-    }
-    .event-date {
-      color: var(--terracotta);
-      font-weight: 600;
-      margin: 0.7rem 0;
-    }
-
-    /* gallery grid */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.2rem;
-      margin-top: 2rem;
-    }
-    .gallery-item {
-      aspect-ratio: 1 / 1;
-      border-radius: 25px;
-      background-size: cover;
-      background-position: center;
-      box-shadow: var(--shadow);
+    .cat-btn {
+      background: white; border: 1px solid var(--olive-light); padding: 0.6rem 1.5rem;
+      border-radius: 40px; font-weight: 600; color: var(--olive); cursor: pointer;
       transition: 0.2s;
     }
-    .gallery-item:hover {
-      transform: scale(1.02);
-    }
+    .cat-btn.active { background: var(--olive); color: white; border-color: var(--olive); }
 
-    /* contact row */
-    .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3rem;
-      background: white;
-      padding: 2.5rem;
-      border-radius: 40px;
-      box-shadow: var(--shadow);
+    /* food grid */
+    .food-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 2rem;
+      margin: 2rem 0;
     }
-    .contact-info {
-      flex: 1 1 250px;
+    .food-card {
+      background: white; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow);
+      transition: 0.2s;
     }
-    .contact-info i {
-      color: var(--terracotta);
-      width: 35px;
-      font-size: 1.4rem;
+    .food-card:hover { transform: translateY(-4px); }
+    .food-img { height: 180px; background-size: cover; background-position: center; }
+    .food-info { padding: 1rem; }
+    .food-name { font-weight: 700; font-size: 1.3rem; color: var(--olive); }
+    .food-price { font-weight: 600; color: var(--terracotta); margin: 0.3rem 0; }
+    .rating { color: #f5b342; margin-bottom: 0.5rem; }
+    .add-to-cart {
+      background: var(--terracotta); color: white; border: none; padding: 0.5rem 1rem;
+      border-radius: 30px; width: 100%; font-weight: 600; cursor: pointer;
+      transition: 0.2s;
     }
-    .contact-info p {
-      margin: 1rem 0;
+    .add-to-cart:hover { background: var(--terracotta-dark); }
+
+    /* cart panel (slide from right) */
+    .cart-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3); z-index: 200; display: none;
     }
-    .map-placeholder {
-      flex: 2 1 350px;
-      background: #dad3cb;
-      border-radius: 30px;
-      height: 240px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #5a4f48;
-      font-weight: 500;
-      background-image: url('https://images.unsplash.com/photo-1509358271058-acd22cc93898?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
-      background-size: cover;
-      background-position: center;
+    .cart-panel {
+      position: fixed; top: 0; right: -400px; width: 380px; height: 100%;
+      background: white; box-shadow: -5px 0 20px rgba(0,0,0,0.1); z-index: 210;
+      transition: right 0.3s; padding: 1.5rem; display: flex; flex-direction: column;
     }
-    .map-placeholder span {
-      background: rgba(255,250,240,0.8);
-      padding: 0.7rem 1.5rem;
-      border-radius: 60px;
-      color: var(--olive);
-      font-weight: 600;
+    .cart-panel.open { right: 0; }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .cart-items { flex: 1; overflow-y: auto; }
+    .cart-item {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid #eee; padding: 0.8rem 0;
+    }
+    .cart-item-info { flex: 2; }
+    .cart-item-title { font-weight: 600; }
+    .cart-item-price { color: var(--terracotta); }
+    .cart-qty {
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .cart-qty button {
+      background: #eee; border: none; width: 28px; height: 28px; border-radius: 50%;
+      font-weight: bold; cursor: pointer;
+    }
+    .cart-footer { border-top: 2px solid #eee; padding-top: 1rem; }
+    .subtotal, .delivery, .total, .discount { display: flex; justify-content: space-between; margin: 0.3rem 0; }
+    .total { font-weight: 700; font-size: 1.2rem; color: var(--olive); }
+    .checkout-btn {
+      background: var(--olive); color: white; border: none; padding: 1rem;
+      border-radius: 40px; font-weight: 600; width: 100%; margin-top: 1rem; cursor: pointer;
+    }
+    .close-cart { font-size: 1.8rem; cursor: pointer; }
+
+    /* address / payment forms */
+    .checkout-section { display: none; margin: 2rem 0; background: white; padding: 2rem; border-radius: 30px; }
+    .form-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { flex: 1 1 200px; }
+    .form-group label { display: block; font-weight: 500; color: var(--olive); }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 0.8rem; border: 1px solid #ddd0c0; border-radius: 30px;
+      background: #fefcf9;
+    }
+    .payment-options { display: flex; gap: 2rem; margin: 1.5rem 0; }
+    .payment-option { display: flex; align-items: center; gap: 0.5rem; }
+    .qr-placeholder {
+      background: #eee; padding: 1rem; text-align: center; border-radius: 30px;
+      display: none; margin: 1rem 0;
+    }
+    .place-order-btn { background: var(--terracotta); color: white; border: none; padding: 1rem 2rem; border-radius: 40px; font-weight: 600; cursor: pointer; }
+
+    /* order confirmation */
+    .confirmation { background: #e6f0da; padding: 2rem; border-radius: 30px; margin: 2rem 0; display: none; }
+
+    /* admin panel */
+    .admin-section {
+      background: #2e2b27; color: #f5ede3; padding: 2rem; border-radius: 40px;
+      margin: 3rem 1.5rem;
+    }
+    .admin-stats { display: flex; gap: 2rem; justify-content: space-around; flex-wrap: wrap; }
+    .stat-card { background: #4a433b; padding: 1.5rem; border-radius: 30px; min-width: 150px; text-align: center; }
+    .orders-list { margin-top: 2rem; }
+    .order-row {
+      display: flex; justify-content: space-between; align-items: center;
+      background: #3f3a35; padding: 1rem; border-radius: 20px; margin-bottom: 0.8rem;
+    }
+    .order-actions button {
+      background: var(--terracotta); border: none; color: white; padding: 0.4rem 1rem;
+      border-radius: 20px; margin-left: 0.5rem; cursor: pointer;
     }
 
     /* footer */
-    .footer {
-      background: #e6dbcf;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      color: #4d3f36;
-      margin-top: 3rem;
-      border-top: 4px solid var(--olive);
-    }
-    .socials {
-      margin-top: 1rem;
-    }
-    .socials a {
-      color: var(--terracotta);
-      font-size: 1.7rem;
-      margin: 0 0.7rem;
-      transition: 0.2s;
-    }
-    .socials a:hover {
-      color: var(--olive);
-    }
+    .footer { background: #e6dbcf; padding: 2rem; text-align: center; margin-top: 3rem; }
 
-    /* small adjustments */
-    hr {
-      border: 1px solid rgba(107, 142, 35, 0.2);
-      margin: 2rem 0;
+    /* extra */
+    .whatsapp-btn {
+      background: #25D366; color: white; border-radius: 40px; padding: 0.8rem 1.5rem;
+      display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; margin: 1rem 0;
     }
+    .badge { background: gold; color: black; padding: 0.2rem 0.6rem; border-radius: 30px; font-size: 0.8rem; margin-left: 0.5rem; }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
+  <!-- navbar with cart -->
   <nav class="navbar">
     <div class="nav-container">
-      <a href="#home" class="logo">Bs Cafe <span>Ampati</span></a>
+      <a href="#" class="logo">Bs Cafe <span>Ampati</span></a>
       <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#about">About</a>
-        <a href="#reservations">Reservations</a>
-        <a href="#events">Events</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
+        <a href="#">Home</a><a href="#menu">Menu</a><a href="#about">About</a><a href="#contact">Contact</a>
       </div>
-      <div class="menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
+      <div style="display: flex; gap: 1.5rem;">
+        <div class="cart-icon" id="cartIcon">
+          <i class="fas fa-shopping-cart" style="font-size: 1.6rem; color: var(--olive);"></i>
+          <span class="cart-count" id="cartCount">0</span>
+        </div>
+        <div class="menu-icon" id="menuIcon"><i class="fas fa-bars"></i></div>
+      </div>
     </div>
   </nav>
 
-  <!-- HOME section (hero) -->
-  <section id="home" class="hero section-padding" style="padding-top: 2rem;">
-    <div class="hero-content">
-      <h1>Where <em>seasonal</em><br>simplicity meets warmth</h1>
-      <p>Inspired by the earth, crafted by hand — terracotta & olive on every plate.</p>
-      <a href="#reservations" class="btn">reserve a table <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
-    </div>
-    <div class="hero-image"></div>
+  <!-- hero -->
+  <section class="hero">
+    <div><h1>order <em>online</em><br>from our seasonal kitchen</h1></div>
+    <a href="#" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> order via WhatsApp</a>
   </section>
 
-  <!-- MENU section (preview) -->
-  <section id="menu" class="section-padding container">
-    <h2>seasonal menu</h2>
-    <div class="menu-grid">
-      <div class="menu-card">
-        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-        <h3>harvest bowl</h3>
-        <p>roasted roots, wild rice, herbs & tahini</p>
-        <span class="price">$16</span>
-      </div>
-      <div class="menu-card">
-        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-        <h3>wood-fired pie</h3>
-        <p>heirloom tomatoes, basil, olive tapenade</p>
-        <span class="price">$19</span>
-      </div>
-      <div class="menu-card">
-        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-        <h3>grass-fed strip</h3>
-        <p>with salsa verde & charred scallions</p>
-        <span class="price">$28</span>
-      </div>
-      <div class="menu-card">
-        <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-        <h3>pasta al forno</h3>
-        <p>baked seasonal squash, sage, parmesan</p>
-        <span class="price">$22</span>
-      </div>
-    </div>
-    <div style="text-align: right; margin-top: 2rem;">
-      <a href="#" style="color: var(--terracotta); font-weight: 600;">view full menu <i class="fas fa-long-arrow-alt-right"></i></a>
-    </div>
+  <!-- menu categories & food grid -->
+  <section id="menu" class="container" style="padding: 0 1.5rem;">
+    <h2 style="color: var(--olive);">🍱 our menu</h2>
+    <div class="categories" id="categories"></div>
+    <div class="food-grid" id="foodGrid"></div>
   </section>
 
-  <!-- ABOUT US -->
-  <section id="about" class="section-padding" style="background-color: #f4ebe2;">
-    <div class="container about-grid">
-      <div class="about-text">
-        <h2>about us</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">At Bs Cafe Ampati, we believe in the rhythm of the seasons. Our kitchen works with local farms to bring you ingredients at their peak — from autumn roots to spring greens.</p>
-        <p>Inspired by the earthy tones of terracotta and olive groves, our space is designed for unhurried meals and genuine connection. Whether it's a weekday lunch or a celebration, you'll find a menu that changes with nature.</p>
-      </div>
-      <div class="about-image"></div>
+  <!-- cart overlay & panel -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-header"><h3>your cart</h3><span class="close-cart" id="closeCart">&times;</span></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="subtotal"><span>Subtotal</span> <span id="subtotal">₹0</span></div>
+      <div class="delivery"><span>Delivery (flat)</span> <span id="delivery">₹40</span></div>
+      <div class="discount" id="discountRow" style="display:none;"><span>Discount</span> <span id="discountAmount">-₹0</span></div>
+      <div class="total"><span>Total</span> <span id="total">₹40</span></div>
+      <input type="text" placeholder="coupon code" id="couponInput" style="width:70%; padding:0.5rem; border-radius:30px; border:1px solid #ccc;">
+      <button id="applyCoupon" style="background:var(--olive); color:white; border:none; padding:0.5rem 1rem; border-radius:30px;">apply</button>
+      <button class="checkout-btn" id="checkoutBtn">proceed to checkout</button>
     </div>
-  </section>
+  </div>
 
-  <!-- RESERVATIONS -->
-  <section id="reservations" class="section-padding container">
-    <h2>reserve a table</h2>
-    <div class="reservation-form">
-      <form>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" placeholder="Your name">
-          </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="you@example.com">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Date</label>
-            <input type="date" value="2025-04-15">
-          </div>
-          <div class="form-group">
-            <label>Time</label>
-            <select>
-              <option>5:00 PM</option>
-              <option>5:30 PM</option>
-              <option>6:00 PM</option>
-              <option>6:30 PM</option>
-              <option>7:00 PM</option>
-              <option>7:30 PM</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Guests</label>
-            <select>
-              <option>2 guests</option>
-              <option>3 guests</option>
-              <option>4 guests</option>
-              <option>5 guests</option>
-              <option>6 guests</option>
-            </select>
-          </div>
-        </div>
-        <button type="submit" class="btn">check availability</button>
-      </form>
-      <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #6b5e53;"><i class="fas fa-leaf" style="color: var(--olive);"></i> For parties larger than 6, please call us.</p>
+  <!-- checkout area (address, payment) -->
+  <div class="container" id="checkoutSection" style="display: none;">
+    <div style="background:white; border-radius:30px; padding:2rem;">
+      <h3>delivery details</h3>
+      <div class="form-row"><div class="form-group"><label>Name</label><input id="addrName"></div><div class="form-group"><label>Phone</label><input id="addrPhone"></div></div>
+      <div class="form-group"><label>Address</label><textarea id="addrAddress" rows="2"></textarea></div>
+      <div class="form-group"><label>Landmark</label><input id="addrLandmark"></div>
+      
+      <h3 style="margin-top:2rem;">payment</h3>
+      <div class="payment-options">
+        <label class="payment-option"><input type="radio" name="payment" value="cod" checked> Cash on delivery</label>
+        <label class="payment-option"><input type="radio" name="payment" value="upi"> UPI</label>
+      </div>
+      <div class="qr-placeholder" id="qrCode">
+        <p><i class="fas fa-qrcode" style="font-size:3rem;"></i></p>
+        <p>Scan QR: amp@ybl | upload screenshot (demo)</p>
+        <input type="file" accept="image/*">
+      </div>
+      <button class="place-order-btn" id="placeOrderBtn">place order</button>
+    </div>
+  </div>
+
+  <!-- order confirmation -->
+  <div class="container" id="confirmationBox" style="display: none;">
+    <div style="background:#e6f0da; padding:2rem; border-radius:30px;">
+      <h2>✅ order placed!</h2>
+      <p>Order ID: <span id="orderId">#OIS1245</span></p>
+      <p>Delivery in 30-40 minutes</p>
+    </div>
+  </div>
+
+  <!-- admin panel (powerful) -->
+  <section class="admin-section" id="adminPanel">
+    <h2 style="color:white;">👨‍🍳 admin dashboard</h2>
+    <div class="admin-stats">
+      <div class="stat-card"><span>orders today</span><h3 id="ordersToday">12</h3></div>
+      <div class="stat-card"><span>revenue today</span><h3 id="revenueToday">₹3,400</h3></div>
+    </div>
+    <div class="orders-list" id="ordersList">
+      <!-- dynamic orders from JS -->
+    </div>
+    <div style="margin-top:2rem;">
+      <h4>➕ add new dish</h4>
+      <input type="text" placeholder="name" id="newName"><br>
+      <input type="number" placeholder="price" id="newPrice"><br>
+      <select id="newCat"><option>Starters</option><option>Sushi</option><option>Main Course</option></select>
+      <button id="addDishBtn" style="background:var(--terracotta); color:white; border:none; padding:0.5rem 1rem;">Add</button>
     </div>
   </section>
 
-  <!-- EVENTS -->
-  <section id="events" class="section-padding" style="background-color: #f4ebe2;">
-    <div class="container">
-      <h2>upcoming events</h2>
-      <div class="events-grid">
-        <div class="event-item">
-          <h3>farmers’ supper</h3>
-          <div class="event-date">fri, may 12 · 7pm</div>
-          <p>Four courses celebrating local spring produce, with the farmers themselves.</p>
-        </div>
-        <div class="event-item">
-          <h3>pasta workshop</h3>
-          <div class="event-date">sat, may 20 · 11am</div>
-          <p>Hands‑on class making seasonal filled pasta. take home what you make.</p>
-        </div>
-        <div class="event-item">
-          <h3>wine & olives</h3>
-          <div class="event-date">thu, jun 1 · 6:30pm</div>
-          <p>natural wine tasting paired with mediterranean small plates.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="gallery" class="section-padding container">
-    <h2>gallery</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1543339308-43e59d6b73a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1560624052-449f5ddf0c31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-      <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1586999768265-24af89630739?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section-padding" style="background-color: #f4ebe2;">
-    <div class="container">
-      <h2>visit / contact</h2>
-      <div class="contact-row">
-        <div class="contact-info">
-          <p><i class="fas fa-map-pin"></i> 12 Bs Lane, Ampati</p>
-          <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
-          <p><i class="fas fa-envelope"></i> hello@bscafeampati.com</p>
-          <p><i class="fas fa-clock"></i> Wed–Mon 9am–10pm<br>(closed tuesday)</p>
-        </div>
-        <div class="map-placeholder">
-          <span><i class="fas fa-map-marked-alt" style="margin-right: 8px;"></i> open in maps</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
+  <!-- footer -->
   <footer class="footer">
-    <p>© 2025 Bs Cafe Ampati — grown from earth, served with warmth</p>
-    <div class="socials">
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-x-twitter"></i></a>
-    </div>
-    <p style="margin-top: 1rem; font-size: 0.9rem;">terracotta & olive · seasonal always</p>
+    <p>📍 Google Maps: <a href="#">Bs Cafe Ampati, Laitumkhrah</a></p>
+    <div class="socials"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook"></i></a></div>
   </footer>
 
-  <!-- simple mobile menu toggle -->
   <script>
-    const menuIcon = document.getElementById('menuIcon');
-    const navLinks = document.getElementById('navLinks');
+    (function() {
+      // ---------- DATA ----------
+      const menuData = [
+        // starters
+        { id: 1, name: 'Veg Spring Rolls', category: 'Starters', price: 180, rating: 4.3, img: 'https://images.unsplash.com/photo-1627662057123-73e4d2e5b6f5?w=800&auto=format' },
+        { id: 2, name: 'Chicken Gyoza', category: 'Starters', price: 220, rating: 4.5, img: 'https://images.unsplash.com/photo-1627662057123-73e4d2e5b6f5?w=800&auto=format' },
+        // sushi
+        { id: 3, name: 'Salmon Sushi (4pcs)', category: 'Sushi', price: 320, rating: 4.8, img: 'https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?w=800&auto=format' },
+        { id: 4, name: 'Avocado Maki', category: 'Sushi', price: 260, rating: 4.4, img: 'https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?w=800&auto=format' },
+        // tempura
+        { id: 5, name: 'Shrimp Tempura', category: 'Tempura', price: 290, rating: 4.6, img: 'https://images.unsplash.com/photo-1627662057123-73e4d2e5b6f5?w=800&auto=format' },
+        // main course
+        { id: 6, name: 'Grilled Salmon', category: 'Main Course', price: 450, rating: 4.7, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format' },
+        { id: 7, name: 'Paneer Butter Masala', category: 'Main Course', price: 320, rating: 4.5, img: 'https://images.unsplash.com/photo-1565557623262-b1c4c5e9ea5b?w=800&auto=format' },
+        // ramen
+        { id: 8, name: 'Tonkotsu Ramen', category: 'Ramen', price: 350, rating: 4.9, img: 'https://images.unsplash.com/photo-1617093727343-374698b1ddb2?w=800&auto=format' },
+        // fried rice
+        { id: 9, name: 'Thai Fried Rice', category: 'Fried Rice', price: 240, rating: 4.2, img: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800&auto=format' },
+        // noodles
+        { id: 10, name: 'Hakka Noodles', category: 'Noodles', price: 210, rating: 4.1, img: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?w=800&auto=format' },
+        // drinks
+        { id: 11, name: 'Green Tea', category: 'Drinks', price: 90, rating: 4.3, img: 'https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?w=800&auto=format' },
+        { id: 12, name: 'Iced Lemonade', category: 'Drinks', price: 120, rating: 4.4, img: 'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=800&auto=format' },
+      ];
 
-    menuIcon.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
+      const categories = ['Starters','Sushi','Tempura','Main Course','Ramen','Fried Rice','Noodles','Drinks'];
 
-    // close menu after clicking a link (optional for better UX)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        navLinks.classList.remove('show');
+      // ---------- STATE ----------
+      let cart = JSON.parse(localStorage.getItem('bsCart')) || [];
+      let selectedCategory = 'Starters';
+      let couponApplied = false;
+      let orders = JSON.parse(localStorage.getItem('bsOrders')) || [
+        { id: '#ORD1001', customer: 'Rahul', items: 'Ramen x2', total: 440, status: 'pending' },
+        { id: '#ORD1002', customer: 'Priya', items: 'Tempura x1', total: 290, status: 'accepted' },
+      ];
+
+      // ---------- RENDER FUNCTIONS ----------
+      function renderCategories() {
+        const container = document.getElementById('categories');
+        container.innerHTML = categories.map(c => `<span class="cat-btn ${c===selectedCategory?'active':''}" data-cat="${c}">${c}</span>`).join('');
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            selectedCategory = e.target.dataset.cat;
+            renderCategories();
+            renderFoodGrid();
+          });
+        });
+      }
+
+      function renderFoodGrid() {
+        const filtered = menuData.filter(item => item.category === selectedCategory);
+        const grid = document.getElementById('foodGrid');
+        grid.innerHTML = filtered.map(item => `
+          <div class="food-card">
+            <div class="food-img" style="background-image:url('${item.img}')"></div>
+            <div class="food-info">
+              <div class="food-name">${item.name}</div>
+              <div class="food-price">₹${item.price}</div>
+              <div class="rating">⭐ ${item.rating} ${item.rating>4.5 ? '<span class="badge">popular</span>' : ''}</div>
+              <button class="add-to-cart" data-id="${item.id}">add to cart</button>
+            </div>
+          </div>
+        `).join('');
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const id = parseInt(e.target.dataset.id);
+            addToCart(id);
+          });
+        });
+      }
+
+      function addToCart(id) {
+        const item = menuData.find(d => d.id === id);
+        const existing = cart.find(c => c.id === id);
+        if (existing) existing.qty += 1;
+        else cart.push({ ...item, qty: 1 });
+        updateCart();
+      }
+
+      function updateCart() {
+        localStorage.setItem('bsCart', JSON.stringify(cart));
+        const count = cart.reduce((acc, i) => acc + i.qty, 0);
+        document.getElementById('cartCount').innerText = count;
+        renderCartItems();
+      }
+
+      function renderCartItems() {
+        const container = document.getElementById('cartItems');
+        if (cart.length === 0) { container.innerHTML = '<p>cart empty</p>'; }
+        else {
+          container.innerHTML = cart.map(item => `
+            <div class="cart-item">
+              <div class="cart-item-info">
+                <div class="cart-item-title">${item.name}</div>
+                <div class="cart-item-price">₹${item.price}</div>
+              </div>
+              <div class="cart-qty">
+                <button class="qty-minus" data-id="${item.id}">−</button>
+                <span>${item.qty}</span>
+                <button class="qty-plus" data-id="${item.id}">+</button>
+              </div>
+            </div>
+          `).join('');
+          document.querySelectorAll('.qty-plus').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const id = parseInt(e.target.dataset.id);
+              const item = cart.find(c => c.id === id);
+              if (item) item.qty++;
+              updateCart();
+            });
+          });
+          document.querySelectorAll('.qty-minus').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              const id = parseInt(e.target.dataset.id);
+              const idx = cart.findIndex(c => c.id === id);
+              if (idx !== -1) {
+                if (cart[idx].qty > 1) cart[idx].qty--;
+                else cart.splice(idx, 1);
+              }
+              updateCart();
+            });
+          });
+        }
+        calcTotal();
+      }
+
+      function calcTotal() {
+        const subtotal = cart.reduce((acc, i) => acc + i.price * i.qty, 0);
+        const delivery = 40;
+        let discount = 0;
+        if (couponApplied) discount = subtotal * 0.1; // 10% off
+        const total = subtotal + delivery - discount;
+        document.getElementById('subtotal').innerText = `₹${subtotal}`;
+        document.getElementById('delivery').innerText = `₹${delivery}`;
+        document.getElementById('total').innerText = `₹${total}`;
+        if (discount > 0) {
+          document.getElementById('discountRow').style.display = 'flex';
+          document.getElementById('discountAmount').innerText = `-₹${discount}`;
+        } else document.getElementById('discountRow').style.display = 'none';
+      }
+
+      // ---------- COUPON ----------
+      document.getElementById('applyCoupon').addEventListener('click', () => {
+        const code = document.getElementById('couponInput').value;
+        if (code === 'AMPATI10') {
+          couponApplied = true;
+          calcTotal();
+        } else alert('invalid coupon');
       });
-    });
+
+      // ---------- CART UI ----------
+      const cartIcon = document.getElementById('cartIcon');
+      const cartPanel = document.getElementById('cartPanel');
+      const overlay = document.getElementById('cartOverlay');
+      const closeCart = document.getElementById('closeCart');
+
+      function openCart() { cartPanel.classList.add('open'); overlay.style.display = 'block'; }
+      function closeCartPanel() { cartPanel.classList.remove('open'); overlay.style.display = 'none'; }
+
+      cartIcon.addEventListener('click', openCart);
+      closeCart.addEventListener('click', closeCartPanel);
+      overlay.addEventListener('click', closeCartPanel);
+
+      // ---------- CHECKOUT ----------
+      document.getElementById('checkoutBtn').addEventListener('click', () => {
+        if (cart.length === 0) { alert('cart empty'); return; }
+        closeCartPanel();
+        document.getElementById('checkoutSection').style.display = 'block';
+      });
+
+      document.querySelectorAll('input[name="payment"]').forEach(r => {
+        r.addEventListener('change', (e) => {
+          document.getElementById('qrCode').style.display = e.target.value === 'upi' ? 'block' : 'none';
+        });
+      });
+
+      document.getElementById('placeOrderBtn').addEventListener('click', () => {
+        // basic validation
+        if (!document.getElementById('addrName').value) { alert('enter name'); return; }
+        // generate order
+        const orderId = '#OIS' + Math.floor(Math.random()*10000);
+        document.getElementById('orderId').innerText = orderId;
+        document.getElementById('confirmationBox').style.display = 'block';
+        document.getElementById('checkoutSection').style.display = 'none';
+        cart = [];
+        updateCart();
+        // add to admin orders
+        orders.push({ id: orderId, customer: document.getElementById('addrName').value, items: 'order details', total: document.getElementById('total').innerText, status: 'pending' });
+        localStorage.setItem('bsOrders', JSON.stringify(orders));
+        renderAdminOrders();
+      });
+
+      // ---------- ADMIN PANEL ----------
+      function renderAdminOrders() {
+        const list = document.getElementById('ordersList');
+        list.innerHTML = orders.map(o => `
+          <div class="order-row">
+            <span>${o.id} - ${o.customer} - ${o.total}</span>
+            <div class="order-actions">
+              ${o.status === 'pending' ? '<button class="accept">accept</button><button class="reject">reject</button>' : ''}
+              ${o.status === 'accepted' ? '<button class="delivered">mark delivered</button>' : ''}
+              <span style="color:${o.status==='delivered'?'green':'orange'}">${o.status}</span>
+            </div>
+          </div>
+        `).join('');
+        // attach event listeners for accept/reject/delivered (demo only)
+      }
+      renderAdminOrders();
+
+      // add new dish
+      document.getElementById('addDishBtn').addEventListener('click', () => {
+        const name = document.getElementById('newName').value;
+        const price = parseInt(document.getElementById('newPrice').value);
+        const cat = document.getElementById('newCat').value;
+        if (!name || !price) return;
+        const newId = menuData.length + 100;
+        menuData.push({ id: newId, name, category: cat, price, rating: 4.0, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format' });
+        renderFoodGrid();
+      });
+
+      // init
+      renderCategories();
+      renderFoodGrid();
+      updateCart();
+
+      // update admin stats
+      document.getElementById('ordersToday').innerText = orders.length;
+      const rev = orders.reduce((acc,o)=> acc + (parseInt(o.total.toString().replace('₹','')) || 0), 0);
+      document.getElementById('revenueToday').innerText = `₹${rev}`;
+    })();
   </script>
 </body>
-    </html>
+        </html>
